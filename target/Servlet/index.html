@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+		<form name="Form" action="http://localhost:8080/servletJsonPlaceHolder" onsubmit="return validateForm()" method="get">
+		Name: <input type="text" name="id">
+		<input type="submit" value="Submit">
+		</form>
+		<script>
+		function validateForm() {
+			var x = document.forms["Form"]["id"].value;
+			if (x<1 || x>200 || isNaN(x)) {
+				alert("El valor debe estar entre 1 y 200, y únicamente puede ser un número");
+				return false;
+			}
+		}
+		</script>
+    </body>
+</html>

@@ -3,6 +3,7 @@ package edu.eci.cvds.servlet.adivinanza;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.ArrayList;
 
 
 @ManagedBean(name = "guessBean")
@@ -11,12 +12,22 @@ import javax.faces.bean.SessionScoped;
 
 public class Adivinanza {
     int Numadi=(int) (Math.random() * 10);
-    int intentos;
-    int premio=0;
+    private int intentos;
+    private int premio=0;
     String estado;
     String numingr;
+    private ArrayList<Integer> lisintentos;
 
     public Adivinanza() {}
+
+    /**
+     * obtener lista de intentos realizados por el usuario
+     * @return
+     */
+    public ArrayList<Integer> getLisintentos() {
+        return lisintentos;
+    }
+
 
     /**
      * obetner el numero que se va a adivinar
@@ -103,6 +114,7 @@ public class Adivinanza {
      * @param numero ingresado en la pagina
      */
     public void guess(String numero){
+        lisintentos.add(Integer.parseInt(numero));
         numingr = numero;
         if (Numadi == Integer.parseInt(numero)){
             premio += 100000;
@@ -113,8 +125,7 @@ public class Adivinanza {
                 premio -= 10000;
             }
             premio += 0;
-            estado = "no ganó";
-            intentos += 1;
+            estado = "no gana";
         }
     }
 
@@ -122,6 +133,7 @@ public class Adivinanza {
      * reiniciar el juego
      */
     public void restart(){
+        lisintentos = new ArrayList<>();
         intentos=0;
         premio=0;
         estado="";
