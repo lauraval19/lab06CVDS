@@ -2,16 +2,29 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-<h:head></h:head>
+<h:head>
+    <title>Guess</title>
+</h:head>
+<body background ="https://thumbs.dreamstime.com/b/fondo-blanco-con-l%C3%ADneas-amarillas-el-vector-se-puede-utilizar-para-papel-de-pared-plantilla-presentaci%C3%B3n-pancarta-afiche-197337770.jpg" style = "background-size:cover"></body>
 <h:body>
+    <center><h1><img src="titulopag.png" style="width: 400px"></img></h1></center>
+
     <h:form id="guess_form">
-        <p:outputLabel> style= "display: none;" > siu < </p:outputLabel>
-        <p:inputText id="numingr" value = "#{guessBean.numingr}" binding="#{input}"/> <br></br>
-        <p:commandButton id="numeroIngresado" value="enviar letra" update="guess_form" actionListener="#{guessBean.guess(input.value)}" styleClass="rounded-button"/><br></br>
-        <p:outputLabel id = "intentos" value = "#{guessBean.intentos}"/><br></br>
-        <p:outputLabel id = "Estado" value = "#{guessBean.estado}"/><br></br>
-        <p:outputLabel id = "Premio" value = "#{guessBean.premio}"/><br></br>
-        <p:commandButton id="restart" value="reiniciar" update="guess_form" actionListener="#{guessBean.restart}" styleClass="rounded-button"/><br></br>
+        <p:outputLabel style= "display: none;" > siu </p:outputLabel>
+        <center><p:inputText id="numingr" value = "#{guessBean.numingr}" binding="#{input}"/></center><br></br>
+        <center><p:commandButton style = "background-color:#9FEE00; margin: 5px; border-radius: 60%" id="numeroIngresado" value="enviar letra" update="guess_form" actionListener="#{guessBean.guess(input.value)}"/></center><br></br>
+        <!--<center><p:outputLabel>Intentos = "#{guessBean.getLisintentos()}"</p:outputLabel></center><br></br>-->
+        <p:dataTable id="intentos" var="intento" value="#{guessBean.getLisintentos()}">
+            <p:column headerText="Intentos">
+                <h:outputText value="#{intento}" />
+            </p:column>
+        </p:dataTable>
+        <br></br>
+        <center><p:outputLabel>Estado = "#{guessBean.getEstado()}"</p:outputLabel></center><br></br>
+        <center> <p:outputLabel>Premio = "#{guessBean.getPremio()}"</p:outputLabel></center><br></br>
+        <center><p:commandButton style = "background-color:#9FEE00; margin: 5px; border-radius: 60%" value="reiniciar" update="guess_form" action="#{guessBean.restart()}"></p:commandButton></center>
     </h:form>
+    <br></br>
+    <center><img src="mesirve.jpg" style="width: 400px"></img></center>
 </h:body>
 </html>

@@ -13,7 +13,13 @@
         <p:outputLabel style= "display: none;" > siu </p:outputLabel>
         <center><p:inputText id="numingr" value = "#{guessBean.numingr}" binding="#{input}"/></center><br></br>
         <center><p:commandButton style = "background-color:#9FEE00; margin: 5px; border-radius: 60%" id="numeroIngresado" value="enviar letra" update="guess_form" actionListener="#{guessBean.guess(input.value)}"/></center><br></br>
-        <center><p:outputLabel>Intentos = "#{guessBean.getIntentos()}"</p:outputLabel></center><br></br>
+        <!--<center><p:outputLabel>Intentos = "#{guessBean.getLisintentos()}"</p:outputLabel></center><br></br>-->
+        <p:dataTable id="intentos" var="intento" value="#{guessBean.getLisintentos()}">
+            <p:column headerText="Intentos">
+                <h:outputText value="#{intento}" />
+            </p:column>
+        </p:dataTable>
+        <br></br>
         <center><p:outputLabel>Estado = "#{guessBean.getEstado()}"</p:outputLabel></center><br></br>
         <center> <p:outputLabel>Premio = "#{guessBean.getPremio()}"</p:outputLabel></center><br></br>
         <center><p:commandButton style = "background-color:#9FEE00; margin: 5px; border-radius: 60%" value="reiniciar" update="guess_form" action="#{guessBean.restart()}"></p:commandButton></center>

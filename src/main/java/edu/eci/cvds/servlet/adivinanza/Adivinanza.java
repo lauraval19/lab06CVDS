@@ -13,10 +13,10 @@ import java.util.ArrayList;
 public class Adivinanza {
     int Numadi=(int) (Math.random() * 10);
     private int intentos;
-    private int premio=0;
+    private int premio=100000;
     String estado;
     String numingr;
-    private ArrayList<Integer> lisintentos;
+    private ArrayList<String> lisintentos;
 
     public Adivinanza() {}
 
@@ -24,7 +24,7 @@ public class Adivinanza {
      * obtener lista de intentos realizados por el usuario
      * @return
      */
-    public ArrayList<Integer> getLisintentos() {
+    public ArrayList<String> getLisintentos() {
         return lisintentos;
     }
 
@@ -114,16 +114,14 @@ public class Adivinanza {
      * @param numero ingresado en la pagina
      */
     public void guess(String numero){
-        lisintentos.add(Integer.parseInt(numero));
+        lisintentos.add(numero);
         numingr = numero;
         if (Numadi == Integer.parseInt(numero)){
             premio += 100000;
-            estado = "ganó 100 puntos";
+            estado = "gana 100.000 puntos";
         }
         else{
-            if(premio >= 10000){
-                premio -= 10000;
-            }
+            premio -= 10000;
             premio += 0;
             estado = "no gana";
         }
@@ -135,7 +133,7 @@ public class Adivinanza {
     public void restart(){
         lisintentos = new ArrayList<>();
         intentos=0;
-        premio=0;
+        premio=100000;
         estado="";
         numingr="";
         Numadi = (int) (Math.random() * 10);
